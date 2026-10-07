@@ -1,0 +1,3 @@
+replicaCount:
+  frontend: 3
+  backend: 3
