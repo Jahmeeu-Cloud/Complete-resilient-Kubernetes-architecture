@@ -4,6 +4,8 @@ A production-style Kubernetes resilience and platform engineering project deploy
 
 The project focuses on more than simply deploying an application. It demonstrates how to **identify, troubleshoot, recover from, and harden common Kubernetes failure scenarios**, particularly around persistent storage, application health checks, autoscaling, and Helm-based deployment.
 
+
+
 ---
 
 ## Project Overview
@@ -73,10 +75,10 @@ The project also includes hands-on troubleshooting of several realistic Kubernet
               PostgreSQL               Redis Service
                  │
                  ▼
-              PVC
+                PVC
                  │
                  ▼
-              PV
+                PV
                  │
                  ▼
            AWS EBS Volume
@@ -102,6 +104,11 @@ The project also includes hands-on troubleshooting of several realistic Kubernet
 | AWS CLI                 | EBS and AWS resource management         |
 
 ---
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/inx5jy0m1g9hw1c18dyd.png)
+
+
 
 # Repository Structure
 
@@ -149,6 +156,11 @@ The project also includes hands-on troubleshooting of several realistic Kubernet
 
 The frontend is deployed as a Kubernetes Deployment and exposed internally through:
 
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/xj5imewi28gj09tm74m0.png)
+
+
+
 ```text
 frontend-service:80
 ```
@@ -163,6 +175,13 @@ Kubernetes Resilience Demo - Frontend Active
 
 ---
 
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/tpplps59969kx1y4e8fi.png)
+
+
+
+---
+
 ## Backend
 
 The backend is deployed as a Kubernetes Deployment and exposed through:
@@ -172,6 +191,11 @@ backend-service:8080
 ```
 
 The backend health endpoint returns:
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/lakx49kttuea10ktni5i.png)
+
+
 
 ```json
 {
@@ -200,6 +224,11 @@ statefulset/postgres
 ```
 
 The database uses persistent storage through:
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/lvps2w10erh1slk6hpsh.png)
+
+
 
 ```text
 StatefulSet
@@ -251,6 +280,11 @@ The application is packaged as a Helm chart:
 ```text
 manifests/helm/resilient-app/
 ```
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/3vkspx3m01wdj3h0wtk8.png)
+
+
 
 The chart contains:
 
@@ -351,10 +385,10 @@ Cluster infrastructure
                 ▼
 Application Helm chart
         │
-        └── PVC
+        └──    PVC
                 │
                 ▼
-             EBS
+               EBS
 ```
 
 ---
@@ -628,6 +662,9 @@ The backend uses a Horizontal Pod Autoscaler.
 
 Configuration:
 
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/6xo5wgsnakhigh7yyoz3.png)
+
+
 ```text
 Minimum replicas: 2
 Maximum replicas: 5
@@ -641,6 +678,11 @@ kubectl get hpa -n resilient-app
 ```
 
 Final observed state:
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ryijlg2mftnscjfsqn4q.png)
+
+
 
 ```text
 TARGETS      MINPODS   MAXPODS   REPLICAS
@@ -701,6 +743,11 @@ The PostgreSQL and Redis services use headless service configurations to support
 
 The application is exposed through a Kubernetes Ingress using the AWS Load Balancer Controller.
 
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/4u4434ef4jpbixk1s3dg.png)
+
+
+
 Ingress:
 
 ```text
@@ -751,6 +798,11 @@ RESTARTS: 0
 ```bash
 kubectl get statefulset,deployment -n resilient-app
 ```
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/l4ip27m7yvbom56vbx3d.png)
+
+
 
 Final state:
 
