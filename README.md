@@ -165,6 +165,11 @@ The frontend is deployed as a Kubernetes Deployment and exposed internally throu
 frontend-service:80
 ```
 
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/9i3exymu08ntksydxikw.png)
+
+
+
 The production configuration supports multiple replicas to improve availability.
 
 The application was validated through Kubernetes port forwarding and returned:
@@ -185,6 +190,11 @@ Kubernetes Resilience Demo - Frontend Active
 ## Backend
 
 The backend is deployed as a Kubernetes Deployment and exposed through:
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/9rlmnyrybgu6tlvoz2ef.png)
+
+
 
 ```text
 backend-service:8080
